@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Django Form</h1>
+
+    <form action="" method='POST' novalidate>
+        {% csrf_token %}
+        {{mf.as_p}}
+        <input type="submit">
+        
+    </form>
+
+    <table border="1">
+        <tr>
+
+            <th>Id</th>
+            <th>Name</th>
+            <th>Heroic Name</th>
+            <th>Action</th>
+        </tr>
+        <br><br>
+        
+        {% for m in mm %}
+        <tr>
+                <td>{{m.id}}</td>
+                <td>{{m.name}}</td>
+                <td>{{m.heroic_name}}</td>
+                <td>
+                   <a href="{% url "delete" m.id %}"><button>Delete</button></a> 
+                   <a href="{% url "update" m.id %}"><button>Update</button></a> 
+                </td>
+            </tr>
+        {% endfor %}
+        
+    </table>
+</body>
+</html>
